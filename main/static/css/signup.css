@@ -3,7 +3,10 @@
     --secondary: #d9b8a6;
     --backdrop: #56321e74;
 }
-.login-bt{
+h1{
+    text-align: center;
+}
+.sign_bt{
     background-color: green;
     color: white;
     border: none;
@@ -14,12 +17,12 @@
     font-size: 22px;
     margin: 10px 0 10px 0;
 }
-.login-bt:hover{
+.sign_bt:hover{
     font-size: 24px;
     padding: 16px 20px 16px 20px;
     transition: .4s;
 }
-.login-bt[disabled]{
+.sign_bt[disabled]{
     opacity: .5;
 }
 body{
@@ -42,7 +45,7 @@ form{
     padding: 40px;
     display: flex;
     justify-content: space-between;
-    align-items: safe;
+    align-items:safe;
     flex-direction: column;
     backdrop-filter: blur(10px);
     border-radius: 30px;
@@ -59,10 +62,12 @@ form input:not(.login-bt){
     border-radius: 20px;
     padding: 4px;
     font-size: 24px;
-    margin: 10px 0 10px 0;
 }
 form input:not(.login-bt):focus{
     outline: none;
+}
+div{
+    margin: 10px 0 10px 0;
 }
 input::placeholder{
     margin-left: 40px;
@@ -75,22 +80,17 @@ input::placeholder{
     font-size: 20px;
     color: var(--secondary)
 }
-input[type=checkbox]{
-    appearance: none;
-    width: 20px;
-    height: 20px;
+select{
     border: none;
-    background-color: transparent;
-}
-div{
-    margin: 10px 0 10px 0;
-}
-h1{
-    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: var(--secondary);
+    width: fit-content
 }
 .buttons{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px
+    gap: 140px;
 }

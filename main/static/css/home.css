@@ -1,3 +1,8 @@
+:root{
+    --primary: #56321e;
+    --secondary: #d9b8a6;
+    --backdrop: #56321e74;
+}
 html{
     scroll-behavior: smooth;
 }
@@ -5,19 +10,22 @@ body{
     margin: 0 auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
-    background-color: rgb(217, 184, 166);
+    background-color: var(--secondary);
     display: flex;
 }
 .nav-bar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(129, 72, 42);
-    padding: 10px;
+    background-color: var(--primary);
+    padding: 4px;
+    position: fixed;
+    width: 90%;
+    z-index: 1;
 }
 .nav-bar i{
     font-size: 40px;
-    color: rgb(164, 124, 102);
+    color: var(--secondary);
     width: 40px;
     height: 40px;
 }
@@ -28,7 +36,7 @@ body{
 }
 a{
     text-decoration: none;
-    color: white;
+    color: var(--secondary);
 }
 button{
     border: none;
@@ -68,18 +76,21 @@ ul{
 }
 .banner1{
     display: flex;
-    justify-content: center;;
+    justify-content: center;
+    margin: 40px;
 }
 .banner1 img{
-    width: 50%
+    width: 50%;
+    border-radius: 30px;
 }
 .presentation{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(86, 50, 30);
-    color:rgb(217, 184, 166);
+    background-color: var(--primary);
+    color:var(--secondary);
 }
 .presentation img{
-    border-radius: 50%
+    border-radius: 50%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }

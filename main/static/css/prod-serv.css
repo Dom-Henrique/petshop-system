@@ -1,0 +1,103 @@
+:root{
+    --primary: #56321e;
+    --secondary: #d9b8a6;
+    --backdrop: #56321e74;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    background-image: url('https://img.freepik.com/vetores-gratis/padrao-fofo-com-rostos-de-cachorro-e-ossos_1191-1204.jpg?semt=ais_hybrid&w=740&q=80');
+    background-size: 250px;
+    background-color: var(--secondary);
+    background-blend-mode: multiply;
+    min-height: 100vh;
+}
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    padding: 4px;
+}
+.nav-bar i{
+    font-size: 40px;
+    color: var(--secondary);
+    width: 40px;
+    height: 40px;
+}
+.options{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+.nav-bar a{
+    color: var(--secondary);
+    text-decoration: none;
+}
+.nav-bar button{
+    background-color: transparent;
+    border: none;
+}
+main{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    background-color: var(--primary);
+    color: var(--secondary);
+    padding: 40px;
+    border-radius: 40px;;
+}
+form input, textarea{
+    background-color: transparent;
+    border: solid 1px var(--secondary);
+    font-size: 20px;
+    border-radius: 20px;
+    color: var(--secondary);
+}
+form input:focus{
+    outline: none;;
+}
+form div{
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px
+}
+select{
+    background-color: var(--secondary);
+    border-radius: 10px;
+    border: none;
+}
+select>option{
+    color: var(--primary)
+}
+h1{
+    text-align: center;
+}
+.send-bt{
+    display: flex;
+    justify-content: center;
+
+}
+.send-bt button{
+    background-color: var(--secondary);
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 20px;
+    transition: .4s;
+}
+.send-bt button:hover{
+    padding: 14px;
+    font-size: 22px;
+    transition: .4s;
+    cursor: pointer;
+}
