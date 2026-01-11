@@ -21,6 +21,8 @@ We intend to add the following functions to the project:
 - Facial recognition;
 - Animations;
 
+***Design are been developed***
+
 # Acknowledgements
 Thank you for using my project for your studies. Feel free to give your feedback. Opinions are always welcome!
 
