@@ -7,33 +7,50 @@
     <title>PetSertão</title>
     <link href="../static/css/home.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../static/images/Software Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav-bar">
-            <button><img src="../static/images/Software Logo.png"></button>
-            <ul class="options">
-                <li><a href="{{ url_for('home') }}">Início</a></li>
-                <li><a href="{{ url_for('products') }}">Produtos</a></li>
-                <li><a href="{{ url_for('home') }}">Categorias</a></li>
-                <li><a href="{{ url_for('services') }}">Serviços</a></li>
-                <li><a href="">Nossos Profissionais</a></li>
-            </ul>
-            <button><img src="../static/images/Users Icon.png"></button>
-        </nav>
-    </header>
     <main>
-        <section class="presentation">
-            <img src="" alt="" class="banner1">
+        <section class="main-content">
+            <header class="header">
+                <nav class="nav-bar">
+                    <button class="logo"><i class="fa-solid fa-bone"></i></button>
+                    <ul class="options">
+                        <li><a href="{{ url_for('home') }}">Início</a></li>
+                        <li><a href="{{ url_for('products') }}">Produtos</a></li>
+                        <li><a href="{{ url_for('home') }}">Categorias</a></li>
+                        <li><a href="{{ url_for('services') }}">Serviços</a></li>
+                        <li><a href="">Nossos Profissionais</a></li>
+                    </ul>
+                    <button class="menu"><i class="fa-solid fa-bars"></i></button>
+                </nav>
+            </header>
         </section>
-        <section class="product">
+        <section class="banner1">
+            <img src="https://res.cloudinary.com/jerrick/image/upload/c_scale,f_jpg,q_auto/682562039e3038001c81aebb.png" alt="" class="">
+        </section>
+        <section class="presentation">
+            <figure>
+                    <img src="https://img.freepik.com/fotos-gratis/veterinario-verificando-a-saude-do-filhote_23-2148728396.jpg?semt=ais_hybrid&w=740&q=80" alt="" srcset="" style="clip-path: 50% at center;">
+            </figure>
             <div>
                 <h3>Mais que um petshop - uma missão de vida</h3>
-                <p>O PetSertão surgiu do carinho e compaixão por essas criaturinhas que infelizmente são maltratadas todos os dias por pessoas cruéis.<br>Nossa clínica busca ao máximo trazer conforto e aconchego</p>
+                <p>A PetSertão tem como missão oferecer atendimento veterinário de excelência, cuidando de cada paciente com carinho, respeito e responsabilidade, promovendo saúde e bem-estar em todas as fases da vida dos animais. Sua visão é ser referência em cuidado veterinário na região, reconhecida pela confiança, humanização no atendimento e compromisso com a qualidade, construindo relações duradouras com tutores e seus pets. Seus valores são baseados no amor aos animais, na ética profissional, na empatia, na dedicação contínua ao aprendizado, na transparência e no compromisso em tratar cada pet como único, garantindo um ambiente acolhedor, seguro e cheio de afeto.
+                </p>
             </div>
         </section>
     </main>
+    <aside>
+        <nav>
+            <ul class="options-lateral">
+                <li><i class="fa-regular fa-user"></i><a>Perfil</a></li>
+                <li><i class="fa-solid fa-gear"></i><a>Configurações</a></li>
+                <li><i class="fa-solid fa-book"></i><a href="">Sobre</a></li>
+                <li><i class="fa-solid fa-arrow-left"></i><a>Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
 </body>
 
 </html>
