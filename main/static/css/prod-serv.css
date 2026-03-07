@@ -1,12 +1,14 @@
-:root{
+:root {
     --primary: #56321e;
     --secondary: #d9b8a6;
     --backdrop: #56321e74;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
-body{
+
+body {
     margin: 0 auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
@@ -16,78 +18,97 @@ body{
     background-blend-mode: multiply;
     min-height: 100vh;
 }
-.nav-bar{
+
+.nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--primary);
     padding: 4px;
 }
-.nav-bar i{
+
+.nav-bar i {
     font-size: 40px;
     color: var(--secondary);
     width: 40px;
     height: 40px;
 }
-.options{
+
+.options {
     list-style: none;
     display: flex;
     gap: 40px;
 }
-.nav-bar a{
+
+.nav-bar a {
     color: var(--secondary);
     text-decoration: none;
 }
-.nav-bar button{
+
+.nav-bar button {
     background-color: transparent;
     border: none;
 }
-main{
+
+main {
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 90vh;
 }
-form{
+
+form {
     background-color: var(--primary);
     color: var(--secondary);
     padding: 40px;
-    border-radius: 40px;;
+    border-radius: 40px;
+    ;
 }
-form input, textarea{
+
+form input,
+textarea {
     background-color: transparent;
     border: solid 1px var(--secondary);
     font-size: 20px;
     border-radius: 20px;
     color: var(--secondary);
 }
-form input:focus{
-    outline: none;;
+
+form input:focus {
+    outline: none;
+    ;
 }
-form div{
-    margin: 10px 0 10px 0;
+
+form div {
+    margin: 16px 0 16px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px
 }
-select{
+
+select {
     background-color: var(--secondary);
     border-radius: 10px;
     border: none;
 }
-select>option{
+
+select>option {
     color: var(--primary)
 }
-h1{
+
+h1 {
     text-align: center;
 }
-.send-bt{
+
+.send-bt {
     display: flex;
     justify-content: center;
 
 }
-.send-bt button{
+
+.send-bt button {
     background-color: var(--secondary);
     border: none;
     padding: 10px;
@@ -95,9 +116,19 @@ h1{
     font-size: 20px;
     transition: .4s;
 }
-.send-bt button:hover{
+
+.send-bt button:hover {
     padding: 14px;
     font-size: 22px;
     transition: .4s;
     cursor: pointer;
+}
+
+.price input::-webkit-inner-spin-button,
+.price input::webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }

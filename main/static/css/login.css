@@ -1,9 +1,10 @@
-:root{
+:root {
     --primary: #56321e;
     --secondary: #d9b8a6;
     --backdrop: #56321e74;
 }
-.login-bt{
+
+.login-bt {
     background-color: green;
     color: white;
     border: none;
@@ -14,15 +15,18 @@
     font-size: 22px;
     margin: 10px 0 10px 0;
 }
-.login-bt:hover{
+
+.login-bt:hover {
     font-size: 24px;
     padding: 16px 20px 16px 20px;
     transition: .4s;
 }
-.login-bt[disabled]{
+
+.login-bt[disabled] {
     opacity: .5;
 }
-body{
+
+body {
     font-family: 'Courier New', Courier, monospace;
     display: flex;
     justify-content: center;
@@ -34,7 +38,8 @@ body{
     background-position: center;
     background-size: cover;
 }
-form{
+
+form {
     background-color: var(--backdrop);
     width: fit-content;
     height: fit-content;
@@ -48,11 +53,14 @@ form{
     border-radius: 30px;
     border: solid 3px var(--secondary)
 }
-form a{
+
+form a {
     color: var(--secondary);
-    text-decoration: none;;
+    text-decoration: none;
+    ;
 }
-form input:not(.login-bt){
+
+form input:not(.login-bt) {
     border: solid var(--secondary) 1px;
     background-color: transparent;
     color: var(--secondary);
@@ -61,34 +69,44 @@ form input:not(.login-bt){
     font-size: 24px;
     margin: 10px 0 10px 0;
 }
-form input:not(.login-bt):focus{
+
+form input:not(.login-bt):focus {
     outline: none;
 }
-input::placeholder{
+
+input::placeholder {
     margin-left: 40px;
 }
-#showPass{
+
+#showPass,
+#speechPass {
     background-color: transparent;
     border: none;
 }
-#showPass i{
+
+#showPass i,
+speechPass i {
     font-size: 20px;
     color: var(--secondary)
 }
-input[type=checkbox]{
+
+input[type=checkbox] {
     appearance: none;
     width: 20px;
     height: 20px;
     border: none;
     background-color: transparent;
 }
-div{
+
+div {
     margin: 10px 0 10px 0;
 }
-h1{
+
+h1 {
     text-align: center;
 }
-.buttons{
+
+.buttons {
     display: flex;
     justify-content: center;
     align-items: center;

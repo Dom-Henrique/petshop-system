@@ -1,0 +1,77 @@
+:root{
+    --primary: #56321e;
+    --secondary: #d9b8a6;
+    --backdrop: #56321e74;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    background-color: var(--secondary);
+    display: flex;
+}
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    padding: 4px;
+    position: fixed;
+    width: 90%;
+    z-index: 1;
+}
+.nav-bar i{
+    font-size: 40px;
+    color: var(--secondary);
+    width: 40px;
+    height: 40px;
+}
+.options{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+a{
+    text-decoration: none;
+    color: var(--secondary);
+}
+button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.options-lateral{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* right: -500px; */
+    top: 0;
+    gap: 20px;;
+}
+.options-lateral li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.options-lateral i{
+    font-size: 40px;
+    color: rgb(164, 124, 102)
+}
+aside{
+    position: fixed;
+    right: 50px;
+    top: 0;
+    background-color: rgb(86, 50, 30);
+    height: 100vh;
+    padding: 0 40px 0 40px;
+}
+ul{
+    padding: 0;
+}
+.products{
+    background-color: red;
+}
