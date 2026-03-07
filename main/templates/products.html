@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSertão</title>
+    <link rel="icon" type="image/x-icon" href="../static/images/Software Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <main>
+        <section class="main-content">
+            <header class="header">
+                <nav class="nav-bar">
+                    <button class="logo"><i class="fa-solid fa-bone"></i></button>
+                    <ul class="options">
+                        <li><a href="{{ url_for('home') }}">Início</a></li>
+                        <li><a href="{{ url_for('products') }}">Produtos</a></li>
+                        <li><a href="{{ url_for('home') }}">Categorias</a></li>
+                        <li><a href="{{ url_for('services') }}">Serviços</a></li>
+                        <li><a href="">Nossos Profissionais</a></li>
+                    </ul>
+                    <button class="menu"><i class="fa-solid fa-bars"></i></button>
+                </nav>
+            </header>
+        </section>
+        <section class="products">
+            <ul>
+                {% for p in products %}
+                    <li>{{p.product_name}}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <aside>
+        <nav>
+            <ul class="options-lateral">
+                <li><i class="fa-regular fa-user"></i><a>Perfil</a></li>
+                <li><i class="fa-solid fa-gear"></i><a>Configurações</a></li>
+                <li><i class="fa-solid fa-book"></i><a href="">Sobre</a></li>
+                <li><i class="fa-solid fa-arrow-left"></i><a>Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
+</body>
+
+</html>
