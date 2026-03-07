@@ -43,14 +43,16 @@
                 <div class="professional">
                     <label for="">Profissional</label>
                     <select name="professional" id="professional">
-                        { % for prof in naosei % }
-                            <option value="{{ prof_id }}">{{prof_name}}</option>
-                        { % endfor % }
+                        <!--Um laço de repetição iria percorrer todos os valores da tabela criada e depois mostraria os opções-->
+                        {%for p in profs_names%}
+                            <option value="professionals">{{p.prof_name}}</option>
+                        {%endfor%}
+                        
                     </select>
                 </div>
                 <div class="price">
                     <label for="">Preço</label>
-                    <input type="number" inputmode="decimal" step="0.01" min="0.00" name="service_price">
+                    <input type="number" inputmode="decimal" step="0.10" min="0.00" name="service_price">
                 </div>
                 <div class="hour">
                     <label for="">Horário</label>

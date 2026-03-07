@@ -28,7 +28,7 @@ class Services(db.Model):
     service_name = db.Column(db.String, nullable=False)
     service_desc = db.Column(db.String, nullable=False)
     serv_category = db.Column(db.String, nullable=False)
-    professional = db.Column(db.String, db.ForeignKey('professionals.prof_name'), nullable=False)
+    professional = db.Column(db.String, db.ForeignKey('professionals.prof_id'), nullable=False)
     service_price = db.Column(db.Integer, nullable=False)
     
 class Professional(db.Model):

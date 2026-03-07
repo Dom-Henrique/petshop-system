@@ -4,6 +4,7 @@ from flask_login import LoginManager, login_user
 from sqlalchemy.exc import IntegrityError
 from db import db
 from models import *
+from functions import recog_voice
 
 app = Flask(__name__) # Serve para localizar o nome do arquivo
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///usersdata.db"
@@ -19,7 +20,8 @@ def user_loader(id): # Busca usuário pelo id
 
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    products = Products.query.all()
+    return render_template('home.html', products=products)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -47,7 +49,7 @@ def register():
 @app.route('/', methods=['GET', 'POST']) # methods servem para informar ao navegador quais tipos de atividades devem ser feitas com os dados enviados.
 def login():
     if request.method == "GET":
-        return render_template('login.html')
+        return render_template('login.html', recog_voice=recog_voice)
     elif request.method == "POST":
         email = request.form['email']
         password = request.form['password']
@@ -81,7 +83,11 @@ def reg_products():
 @app.route('/register_services', methods=['GET', 'POST'])
 def reg_services():
     if request.method=='GET':
-        return render_template('adm_pages/reg-serv.html')
+        # Buscar os elementos
+        professionals = Professional.query.all()
+        profs_names = Professional.query.with_entities(Professional.prof_name).all()
+        # Sempre que eu quiser rodar uma variável no Flask, preciso passar como instância uma variável
+        return render_template('adm_pages/reg-serv.html', profs_names=profs_names, professionals=professionals)
     elif request.method=='POST':
         service_name = request.form['service_name']
         service_desc = request.form['service_desc']
@@ -92,20 +98,18 @@ def reg_services():
         new_service = Services(service_name=service_name, service_desc=service_desc, serv_category=serv_category, professional=professional, service_price=service_price)
         db.session.add(new_service)
         db.session.commit()
-
+        # Depois daqui, o código morre
         return redirect(url_for('reg_services'))
-    # Buscar os elementos
-    naosei = Professional.query.all()
-
-    return render_template('adm_pages/reg-serv.html')
 
 @app.route('/products')
 def products():
-    return render_template('products.html')
+    products = Products.query.all()
+    return render_template('products.html', products=products)
 
 @app.route('/services')
 def services():
-    return render_template('services.html')
+    services = Services.query.all()
+    return render_template('services.html', services=services)
 
 @app.route('/professionals', methods=['GET', 'POST'])
 def professionals():
