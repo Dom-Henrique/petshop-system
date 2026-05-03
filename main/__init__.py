@@ -1,17 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, current_user, login_required, login_remembered
 from sqlalchemy.exc import IntegrityError
 from db import db
 from models import *
-from functions import recog_voice
 
-app = Flask(__name__) # Serve para localizar o nome do arquivo
+app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///usersdata.db"
 db.init_app(app) # Sempre iniciar o app
-app.secret_key = 'manager'
+app.secret_key = 'managerpts'
 log_man = LoginManager(app)
-log_man.login_view = 'login'
+log_man.login_view = 'login' # protege o acesso de informacoes de terceiros
 
 @log_man.user_loader # Vai acessar um método especial da flask_login
 def user_loader(id): # Busca usuário pelo id
@@ -19,9 +17,11 @@ def user_loader(id): # Busca usuário pelo id
     return user
 
 @app.route('/home')
+@login_required
 def home():
+    userName = current_user.firstName
     products = Products.query.all()
-    return render_template('home.html', products=products)
+    return render_template('home.html', products=products, userName=userName)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -49,7 +49,7 @@ def register():
 @app.route('/', methods=['GET', 'POST']) # methods servem para informar ao navegador quais tipos de atividades devem ser feitas com os dados enviados.
 def login():
     if request.method == "GET":
-        return render_template('login.html', recog_voice=recog_voice)
+        return render_template('login.html')
     elif request.method == "POST":
         email = request.form['email']
         password = request.form['password']
@@ -58,9 +58,10 @@ def login():
         if not user:
             return render_template('notlogged.html')
         
-        login_user(user)
+        login_user(user, remember=True) # opcao para lembrar do login por 1 ano
         return redirect(url_for('home'))
 
+@login_required
 @app.route('/register_products', methods=['GET', 'POST'])
 def reg_products():
     if request.method=='GET':
@@ -68,18 +69,20 @@ def reg_products():
     elif request.method=='POST':
         product_name = request.form['product_name']
         product_desc = request.form['product_desc']
+        product_img = request.form['product_img']
         prod_category = request.form['category']
         product_price = request.form['product-price']
         quantity = request.form['quantity']
         
-        new_product = Products(product_name=product_name, product_desc=product_desc, prod_category=prod_category, product_price=product_price, quantity=quantity)
+        new_product = Products(product_name=product_name, product_desc=product_desc, product_img=product_img, prod_category=prod_category, product_price=product_price, quantity=quantity)
         db.session.add(new_product)
         db.session.commit()
 
         return redirect(url_for('reg_products'))
     
     return render_template('adm_pages/reg-prod.html')
-        
+
+@login_required
 @app.route('/register_services', methods=['GET', 'POST'])
 def reg_services():
     if request.method=='GET':
@@ -91,11 +94,12 @@ def reg_services():
     elif request.method=='POST':
         service_name = request.form['service_name']
         service_desc = request.form['service_desc']
+        service_img = request.form['service_img']
         serv_category = request.form['category']
         professional = request.form['professional']
         service_price = request.form['service_price']
         
-        new_service = Services(service_name=service_name, service_desc=service_desc, serv_category=serv_category, professional=professional, service_price=service_price)
+        new_service = Services(service_name=service_name, service_desc=service_desc, service_img=service_img, serv_category=serv_category, professional=professional, service_price=service_price)
         db.session.add(new_service)
         db.session.commit()
         # Depois daqui, o código morre
