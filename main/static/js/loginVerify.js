@@ -1,27 +1,20 @@
-const loginBt = document.querySelector('.login-bt')
+// verificar se os campos estao devidamente preenchidos
+let emailBox = document.querySelector('#emailBox');
+let paswBox = document.querySelector("#password");
+let loginBT = document.querySelector(".login-bt");
+let signBT = document.querySelector(".sign_bt");
 
 function validateFields(){
-    // Variáveis criadas a fim de facilitar a compreensão e design do sistema
-    const isEmailValid = validateEmail();
-    const isPasswordValid = validatePassword();
-
-    loginBt.disabled = !(isEmailValid && isPasswordValid); 
-}
-// Verifica se o e-mail é uma string
-function isEmail(email){
-    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-}
-// Executa a função anterior usando o valor inserido pelo usuário
-function validateEmail(){
-    const email = document.querySelector('input[name="email"]').value;
-    if (!email){
-        return false
-    } else{
-        return isEmail(email);
+    // verificar o email
+    if ((emailBox.value.includes("@") && emailBox.value.includes(".com")) && paswBox.value.length>=8){
+        loginBT.disabled = false;
+        signBT.disabled = false;
+    }
+    else {
+        loginBT.disabled = true;
+        signBT.disabled = true;
     }
 }
-// Verifica se o valor da senha possui um determinado comprimento.
-function validatePassword(){
-    const pasw = document.querySelector('input[name="password"]').value;
-    return pasw.length >= 8;
-}
+
+emailBox.addEventListener("input", validateFields);
+paswBox.addEventListener("input", validateFields)

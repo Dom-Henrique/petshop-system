@@ -25,14 +25,17 @@
             </nav>
             <button class="dark-mode"><i class="fa-solid fa-sun"></i></button>
         </header>
+        <div class="welcome">
+            <p>Seja muito bem-vindo(a), {{ userName }}!</p>
+        </div>
         <section class="banner1">
             <img src="https://res.cloudinary.com/jerrick/image/upload/c_scale,f_jpg,q_auto/682562039e3038001c81aebb.png"
-                alt="" class="">
+                alt="">
         </section>
         <section class="presentation">
             <figure>
                 <img src="https://img.freepik.com/fotos-gratis/veterinario-verificando-a-saude-do-filhote_23-2148728396.jpg?semt=ais_hybrid&w=740&q=80"
-                    alt="" srcset="" style="clip-path: 50% at center;">
+                    alt="">
             </figure>
             <div>
                 <h3>Mais que um petshop - uma missão de vida</h3>
@@ -46,10 +49,13 @@
                 </p>
             </div>
         </section>
+        <section class="toYouHome">
+            
+        </section>
         <section class="products">
             <ul>
                 {% for p in products %}
-                    <button>{{p.product_name}}</button>
+                <button>{{p.product_name}}</button>
                 {% endfor %}
             </ul>
         </section>
