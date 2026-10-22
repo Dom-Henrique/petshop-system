@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, abort
 from flask_login import LoginManager, login_user, current_user, login_required, login_remembered
 from sqlalchemy.exc import IntegrityError
 from db import db
 from models import *
+from functools import wraps
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///usersdata.db"
@@ -22,6 +23,17 @@ def home():
     userName = current_user.firstName
     products = Products.query.all()
     return render_template('home.html', products=products, userName=userName)
+
+def admin_required(func):
+    @wraps(func)
+    @login_required
+    def decorated_view(*arg, **kwargs):
+        if (current_user.type_user != 1):
+            abort(403)
+            
+        return func(*arg, **kwargs)
+
+    return decorated_view
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -60,7 +72,7 @@ def login():
         
         login_user(user, remember=True) # opcao para lembrar do login por 1 ano
         return redirect(url_for('home'))
-
+@admin_required
 @login_required
 @app.route('/register_products', methods=['GET', 'POST'])
 def reg_products():
@@ -83,6 +95,7 @@ def reg_products():
     return render_template('adm_pages/reg-prod.html')
 
 @login_required
+@admin_required
 @app.route('/register_services', methods=['GET', 'POST'])
 def reg_services():
     if request.method=='GET':
@@ -114,7 +127,7 @@ def products():
 def services():
     services = Services.query.all()
     return render_template('services.html', services=services)
-
+@admin_required
 @app.route('/professionals', methods=['GET', 'POST'])
 def professionals():
     if request.method=='GET':
@@ -130,7 +143,7 @@ def professionals():
         return redirect(url_for('professionals'))
     
     return render_template('adm_pages/professionals.html')
-
+    
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
