@@ -23,7 +23,7 @@
                 <li><a href="{{ url_for('products') }}">Produtos</a></li>
                 <li><a href="{{ url_for('home') }}">Categorias</a></li>
                 <li><a href="{{ url_for('services') }}">Serviços</a></li>
-                <li><a href="#profissionais">Nossos Profissionais</a></li>
+                <li><a href="{{ url_for('professionals') }}">Nossos Profissionais</a></li>
             </ul>
         </nav>
         <button class="dark-mode" type="button" aria-label="Alternar modo escuro">
@@ -96,6 +96,13 @@
             <h2>Nossos profissionais</h2>
             <p>Uma equipe que ama animais, estuda sempre e explica cada etapa do cuidado com clareza, para que você
                 acompanhe a saúde do seu pet com tranquilidade.</p>
+                <ul class="professionals-ps">
+                    {% for pf in professionals %}
+                <li><button type="button"><i class="fa-solid fa-paw" aria-hidden="true"></i>{{pf.prof_name}}</button></li>
+                    {% else %}
+                <li class="empty">Em breve, novos profissionais na nossa equipe.</li>
+                    {% endfor %}
+                </ul>
         </section>
 
         <section class="toYouHome">
@@ -104,6 +111,7 @@
                 <li>
                     <a href="{{ url_for('products') }}">
                         <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                        <!-- <img src="../static/uploads/" alt=""> -->
                         <strong>Produtos</strong>
                         <span>Tudo o que o seu pet precisa no dia a dia.</span>
                     </a>
@@ -122,7 +130,8 @@
             <h2>Nossos produtos</h2>
             <ul>
                 {% for p in products %}
-                <li><button type="button"><i class="fa-solid fa-paw" aria-hidden="true"></i>{{p.product_name}}</button></li>
+                <!-- <li><button type="button"><i class="fa-solid fa-paw" aria-hidden="true"></i>{{p.product_img}}</button></li> -->
+                <li><button type="button"><img src="../static/uploads/{{p.product_img}}" alt="">{{p.product_name}}</button></li>
                 {% else %}
                 <li class="empty">Em breve, novos produtos por aqui.</li>
                 {% endfor %}

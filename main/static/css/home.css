@@ -177,7 +177,8 @@ main > section {
 
 .banner1,
 .presentation,
-.products {
+.products,
+.team {
   width: min(var(--largura), 100% - 2.5rem);
   margin-inline: auto;
 }
@@ -426,14 +427,14 @@ main > section {
 
 /* ---------- Produtos ---------- */
 
-.products {
+.products, .team {
   padding: 2.25rem;
   background: var(--papel);
   border-radius: 28px;
   box-shadow: 0 28px 50px -24px rgba(63, 44, 32, 0.55);
 }
 
-.products ul {
+.products ul, .team ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 0.85rem;
@@ -442,7 +443,7 @@ main > section {
   list-style: none;
 }
 
-.products li button {
+.products li button, .team li button {
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -459,17 +460,17 @@ main > section {
     transform 0.12s ease;
 }
 
-.products li button:hover {
+.products li button:hover, .team li button:hover {
   background: var(--aveia);
   border-color: var(--couro-claro);
   transform: translateY(-2px);
 }
 
-.products li button i {
+.products li button i, .team li button i {
   color: var(--couro-claro);
 }
 
-.products li.empty {
+.products li.empty, .team li.empty {
   grid-column: 1 / -1;
   color: var(--placeholder);
 }
