@@ -25,7 +25,7 @@
         </nav>
     </header>
     <main>
-        <form class="services" method="POST" id="services">
+        <form class="services" method="POST" id="services" enctype="multipart/form-data">
             <h1>Cadastrar Serviço</h1>
             <section class="form">
                 <div class="serv-name">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="serv-img">
                     <label for="">Imagem do serviço</label>
-                    <input type="file" name="service_img" id="serv-img">
+                    <input type="file" name="service_img" id="serv-img" accept="image/*">
                 </div>
                 <div class="category">
                     <label for="">Categoria</label>

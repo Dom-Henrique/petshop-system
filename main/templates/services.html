@@ -1,42 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços</title>
+    <meta name="description" content="Conheça os serviços da PetSertão: cuidados pensados para cada fase da vida do seu pet.">
+    <title>PetSertão | Serviços</title>
+    <link href="../static/css/cathalog.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../static/images/Software Logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="../static/js/cathalog.js" defer></script>
 </head>
 
 <body>
-    <header>
-
+    <header class="header">
+        <nav class="nav-bar" aria-label="Menu principal">
+            <a class="logo" href="{{ url_for('home') }}" aria-label="PetSertão, página inicial">
+                <i class="fa-solid fa-bone" aria-hidden="true"></i>
+                <span>PetSertão</span>
+            </a>
+            <button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="menu-principal">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul class="options" id="menu-principal">
+                <li><a href="{{ url_for('home') }}">Início</a></li>
+                <li><a href="{{ url_for('products') }}">Produtos</a></li>
+                <li><a href="{{ url_for('home') }}">Categorias</a></li>
+                <li><a href="{{ url_for('services') }}" aria-current="page">Serviços</a></li>
+                <li><a href="{{ url_for('professionals') }}">Nossos Profissionais</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <section class="main-content">
-            <header class="header">
-                <nav class="nav-bar">
-                    <button class="logo"><i class="fa-solid fa-bone"></i></button>
-                    <ul class="options">
-                        <li><a href="{{ url_for('home') }}">Início</a></li>
-                        <li><a href="{{ url_for('products') }}">Produtos</a></li>
-                        <li><a href="{{ url_for('home') }}">Categorias</a></li>
-                        <li><a href="{{ url_for('services') }}">Serviços</a></li>
-                        <li><a href="">Nossos Profissionais</a></li>
-                    </ul>
-                    <button class="menu"><i class="fa-solid fa-bars"></i></button>
-                </nav>
-            </header>
-        </section>
-        <section class="services">
-            <ul>
+        <!-- "products" reaproveita o estilo do cartão definido no products.css -->
+        <section class="products services">
+            <h1>Nossos serviços</h1>
+            <p class="intro">Cuidados pensados para cada fase da vida do seu pet, com carinho, respeito e
+                responsabilidade.</p>
+
+            <ul class="product-grid">
                 {%for s in services%}
-                    <li>{{s.service_name}}</li>
+                <li class="product-card">
+                    <!-- <h2><i class="fa-solid fa-paw" aria-hidden="true"></i> {{s.service_name}}</h2> -->
+                    <h2><img src="../static/uploads/{{s.service_img}}" alt=""> {{s.service_name}}</h2>
+                </li>
+                {%else%}
+                <li class="empty">Nenhum serviço disponível por aqui ainda.</li>
                 {%endfor%}
             </ul>
         </section>
     </main>
+
+    <footer class="footer">
+        <p>&copy; PetSertão. Todos os direitos reservados.</p>
+        <nav aria-label="Links do rodapé">
+            <ul class="footer-links">
+                <li><a href="{{ url_for('home') }}">Início</a></li>
+                <li><a href="{{ url_for('products') }}">Produtos</a></li>
+                <li><a href="{{ url_for('home') }}">Categorias</a></li>
+                <li><a href="{{ url_for('services') }}">Serviços</a></li>
+                <li><a href="{{ url_for('professionals') }}">Nossos Profissionais</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 
 </html>

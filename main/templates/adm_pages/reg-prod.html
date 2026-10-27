@@ -25,7 +25,7 @@
         </nav>
     </header>
     <main>
-        <form class="products" method="POST" id="products">
+        <form class="products" method="POST" id="products" enctype="multipart/form-data">
             <h1>Cadastrar Produtos</h1>
             <section class="form">
                 <div class="prod-name">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="prod-img">
                     <label for="">Imagem do produto</label>
-                    <input type="file" name="product_img" id="prod-img">
+                    <input type="file" name="product_img" id="prod-img" accept="image/*">
                 </div>
                 <div class="category">
                     <label for="">Categoria</label>
