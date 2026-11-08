@@ -38,3 +38,4 @@ class Professional(db.Model):
     prof_id = db.Column(db.Integer, primary_key=True, unique=True)
     prof_name = db.Column(db.String, nullable=False, unique=True)
     prof_ocupation = db.Column(db.String, nullable=False)
+    prof_img = db.Column(db.String(255), nullable=False)
