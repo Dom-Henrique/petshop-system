@@ -161,24 +161,42 @@ def products():
 def services():
     services = Services.query.all()
     return render_template('services.html', services=services)
+
+@app.route('/register_professionals', methods=['GET', 'POST'])
+@login_required
 @admin_required
-@app.route('/professionals', methods=['GET', 'POST'])
 def professionals():
     if request.method=='GET':
-        return render_template('adm_pages/professionals.html')
+        return render_template('adm_pages/reg-professionals.html')
     elif request.method=='POST':
+        file = request.files.get("prof_img")
+        filename = None
+
+        if file and file.filename:
+            ext = file.filename.rsplit(".", 1)[-1].lower()
+            if not file or not file.filename:
+                return "Image is required", 400
+            if ext not in ALLOWED:
+                return "Invalid file type", 400
+            # unique name avoids collisions and unsafe names
+            filename = f"{uuid.uuid4().hex}.{ext}"
+            file.save(os.path.join(UPLOAD_FOLDER, secure_filename(filename)))
+            print("CONTENT-TYPE:", request.content_type)
+            print("FILES:", request.files)
+            print("FORM:", request.form)
+            
         prof_name = request.form['prof_name']
         prof_ocupation = request.form['prof_ocupation']
+        prof_img = filename
 
-        newProf = Professional(prof_name=prof_name, prof_ocupation=prof_ocupation)
+        newProf = Professional(prof_name=prof_name, prof_ocupation=prof_ocupation, prof_img=prof_img)
         db.session.add(newProf)
         db.session.commit()
 
         return redirect(url_for('home'))
     
-    return render_template('adm_pages/professionals.html')
+    return render_template('adm_pages/reg-professionals.html')
     
-
 
 if __name__ == "__main__":
     with app.app_context():
