@@ -86,7 +86,6 @@ I'm **Dom Henrique**, a back-end developer from Brazil. I recently started my So
 ## 🗺️ Roadmap
 
 - [X] Accessibility features for visually impaired users
-- [ ] Facial recognition
 - [X] Animations
 - [ ] Final UI design *(in progress)*
 - [ ] Rework of the registration / user-type flow
