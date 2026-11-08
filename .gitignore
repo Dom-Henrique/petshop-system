@@ -2,3 +2,4 @@
 *main/instance
 *instance
 *.venv
+*main/static/uploads
