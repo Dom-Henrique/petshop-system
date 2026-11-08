@@ -98,7 +98,7 @@
                 acompanhe a saúde do seu pet com tranquilidade.</p>
                 <ul class="professionals-ps">
                     {% for pf in professionals %}
-                <li><button type="button"><i class="fa-solid fa-paw" aria-hidden="true"></i>{{pf.prof_name}}</button></li>
+                <li><button type="button"><i class="fa-solid fa-paw" aria-hidden="true"></i><img src="../static/uploads/{{pf.prof_img}}">{{pf.prof_name}}</button></li>
                     {% else %}
                 <li class="empty">Em breve, novos profissionais na nossa equipe.</li>
                     {% endfor %}
@@ -131,7 +131,7 @@
             <ul>
                 {% for p in products %}
                 <!-- <li><button type="button"><i class="fa-solid fa-paw" aria-hidden="true"></i>{{p.product_img}}</button></li> -->
-                <li><button type="button"><img src="../static/uploads/{{p.product_img}}" alt="">{{p.product_name}}</button></li>
+                <li><button type="button"><img src="../static/uploads/{{p.product_img}}" alt=""><p>{{p.product_name}}</p></button></li>
                 {% else %}
                 <li class="empty">Em breve, novos produtos por aqui.</li>
                 {% endfor %}
